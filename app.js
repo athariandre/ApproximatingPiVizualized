@@ -1,7 +1,9 @@
 
-function approximatePi(){
-    var points = document.getElementById("numpoints").value;
-    var incircle = 0;
+
+
+function approximatePi(points){
+    // var points = document.getElementById("numpoints").value * 1.0;
+    var incircle = 0.0;
     for(var i = 0; i < points; i++){
         var xpos = Math.random();
         var ypos = Math.random();
@@ -10,11 +12,10 @@ function approximatePi(){
         }
     }
 
-    
-
+    return(incircle/points);
 
 }
-
+console.log(approximatePi(100));
 
  // sqrt ((x2-x1)^2 + (y2-y1)^2) 
  // distance formula used to find the distance between two points
