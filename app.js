@@ -1,21 +1,42 @@
 
-
-
-function approximatePi(points){
-    // var points = document.getElementById("numpoints").value * 1.0;
-    var incircle = 0.0;
-    for(var i = 0; i < points; i++){
-        var xpos = Math.random();
-        var ypos = Math.random();
-        if(Math.sqrt(Math.pow((xpos-0.5),2) + Math.pow((ypos-0.5),2)) <= 0.5){
-            incircle++;
+class approximatePi(points, incircle, pi, loop){
+    
+    constructor(points,incircle){
+        this.points = points;
+        this.incircle = incircle;
+        loop = false;
+    }
+    function approximatePi(points){
+        var incircle = 0.0;
+        var text = document.getElementById("demo");
+        while (true){
+            var xpos = Math.random();
+            var ypos = Math.random();
+            if(Math.sqrt(Math.pow((xpos-0.5),2) + Math.pow((ypos-0.5),2)) <= 0.5){
+                incircle++;
+            }
+            this.points = points;
+            this.incircle = incircle;
+            this.pi = 4*points/incircle;
+            updateText();
         }
     }
+    function updateText(){
+        document.getElementById("demo").innerHTML = pi;
+    }
 
-    return(incircle/points);
-
+    function toggleRun(){
+        var text = document.getElementById("demo");
+        if(text.style.display == "none"){
+            text.style.display = "block";
+        }
+        else{
+            text.style.display = "none";
+        }
+    }
 }
-console.log(approximatePi(100));
+
+
 
  // sqrt ((x2-x1)^2 + (y2-y1)^2) 
  // distance formula used to find the distance between two points
